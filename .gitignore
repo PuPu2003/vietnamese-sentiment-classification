@@ -1,0 +1,8 @@
+.venv/
+.tools/
+__pycache__/
+
+*.csv
+*.parquet
+data_all.md
+prepare_data.py
