@@ -18,7 +18,11 @@ def get_segmenter():
     java_home = ROOT / ".tools" / "java"
     model_dir = ROOT / ".tools" / "vncorenlp"
     if not (java_home / "bin" / "java.exe").exists():
-        raise RuntimeError("Local Java is missing. Run setup_vncorenlp.ps1 first.")
+        # No portable Java in .tools: fall back to the Java already installed (JAVA_HOME).
+        system_java = Path(os.environ.get("JAVA_HOME", ""))
+        if not (system_java / "bin" / "java.exe").exists():
+            raise RuntimeError("Java is missing. Install Java or run setup_vncorenlp.ps1 first.")
+        java_home = system_java
     os.environ["JAVA_HOME"] = str(java_home)
     os.environ["PATH"] = str(java_home / "bin") + os.pathsep + os.environ["PATH"]
     if os.name == "nt":
