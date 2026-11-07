@@ -1,2 +1,0 @@
-learning_rate,batch_size,micro_batch_size,epochs,max_length,overlap,patience,checkpoint,best_epoch,val_macro_f1
-2e-05,16,2,50,256,64,0,trial_01/best_epoch_10,10,0.8565007146525346
