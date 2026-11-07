@@ -6,3 +6,17 @@ __pycache__/
 *.parquet
 data_all.md
 prepare_data.py
+!/output_model/*.csv
+/output_model/predictions_*.csv
+/output_model/errors_*.csv
+/output_model/paired_predictions.csv
+/output_model/*_indices.csv
+
+# Local model weights, checkpoints and runtime logs
+phobert_run*/
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.tmp
+*.log
