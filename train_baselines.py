@@ -1,4 +1,4 @@
-"""TF-IDF baselines (Logistic Regression and Naive Bayes) on the same split as PhoBERT."""
+"""TF-IDF + Logistic Regression baseline on the same split as PhoBERT."""
 
 import argparse
 import hashlib
@@ -9,7 +9,6 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-from sklearn.naive_bayes import ComplementNB
 from sklearn.pipeline import make_pipeline
 
 from train_phobert import LABELS, SEED, macro_f1, split_documents
@@ -20,11 +19,6 @@ MODELS = {
         "parameter": "C",
         "grid": (0.1, 1.0, 10.0, 100.0),
         "classifier": lambda value: LogisticRegression(C=value, max_iter=1000, random_state=SEED),
-    },
-    "tfidf_naive_bayes": {
-        "parameter": "alpha",
-        "grid": (0.01, 0.1, 0.5, 1.0),
-        "classifier": lambda value: ComplementNB(alpha=value),
     },
 }
 
